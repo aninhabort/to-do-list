@@ -1,0 +1,14 @@
+.header {
+    background-color: var(--gray-700);
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+.h1Color1 {
+    color: var(--pink);
+}
+
+.h1Color2 {
+    color: var(--purple);
+}

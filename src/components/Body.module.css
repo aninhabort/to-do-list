@@ -1,0 +1,22 @@
+.createTask {
+    display: flex;
+    flex-flow: row;
+}
+
+.input {
+    background-color: var(--gray-400, #262626);
+    border-radius: 8px;
+    border: none;
+    padding: 16px;
+    gap: 8px;
+}
+
+.buttonCreate {
+    align-items: center;
+    background-color: var(--pink-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    justify-content: center;
+    gap: 8px;
+}
