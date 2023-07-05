@@ -1,22 +1,46 @@
+.content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+
 .createTask {
     display: flex;
-    flex-flow: row;
+    margin-top: 160px;
 }
 
 .input {
     background-color: var(--gray-400, #262626);
     border-radius: 8px;
     border: none;
+    margin-right: 10px;
     padding: 16px;
+    width: 450px;
+    height: 16px;
     gap: 8px;
 }
 
 .buttonCreate {
     align-items: center;
-    background-color: var(--pink-dark);
+    background-color: var(--pink);
     border: none;
     border-radius: 8px;
+    color: white;
     padding: 16px;
     justify-content: center;
     gap: 8px;
+}
+
+.buttonCreate:hover {
+    background-color: var(--pink-dark);
+    color: var(--purple);
+}
+
+.tasks {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    margin-top: 400px;
 }
