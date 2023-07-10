@@ -28,19 +28,57 @@
     border: none;
     border-radius: 8px;
     color: white;
-    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
     justify-content: center;
-    gap: 8px;
+    gap: 4px;
 }
 
 .buttonCreate:hover {
     background-color: var(--pink-dark);
-    color: var(--purple);
 }
 
 .tasks {
     display: flex;
     flex-flow: column;
     position: absolute;
-    margin-top: 400px;
+}
+
+.countTask {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-top: 550px;
+    margin-bottom: 25px;
+    width: 600px;
+}
+
+.color1 {
+    color: var(--pink);
+}
+
+.color2 {
+    color: var(--purple);
+}
+
+.color1 span,
+.color2 span {
+    background-color: var(--gray-400);
+    border-radius: 10px;
+    color: var(--gray-100);
+    padding: 1px 10px;
+}
+
+.taskBorder {
+    border-radius: 8px;
+    border-top: 1px solid var(--gray-400);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.noteImg {
+    padding-bottom: 10px;
 }
