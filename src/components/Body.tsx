@@ -1,26 +1,23 @@
-import { PlusCircle, Notepad, Trash } from "phosphor-react";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { PlusCircle, Notepad } from "phosphor-react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 
 import styles from "./Body.module.css";
 import Tasks from "./Tasks";
 
-export interface TaskType {
-  id: number;
-  content: string;
-}
-
 const Body = () => {
   const [newTask, setNewTask] = useState("");
-  const [tasks, setTasks] = useState([""]);
+  const [tasks, setTasks] = useState([
+    "New Task!"
+  ]);
 
-  const handleCreateNewTasks = (event) => {
+  const handleCreateNewTasks = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     setTasks([...tasks, newTask]);
-    setNewTask("");
+    setNewTask("")
   };
 
-  const handleChangeNewTask = (event) => {
+  const handleChangeNewTask = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTask(event.target.value);
   };
 
@@ -28,7 +25,7 @@ const Body = () => {
     <div className={styles.content}>
       <div className={styles.createTask}>
         <input
-          name="newTask"
+          type="text"
           className={styles.input}
           placeholder="Adicione uma nova tarefa"
           onChange={handleChangeNewTask}
@@ -50,7 +47,7 @@ const Body = () => {
           </p>
         </div>
 
-        {tasks[0] !== "" ? (
+        {tasks ? (
           tasks.map((line) => {
             return <Tasks key={line} content={line} />;
           })

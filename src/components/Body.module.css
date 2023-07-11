@@ -1,9 +1,5 @@
 .content {
-    align-items: center;
-    display: flex;
-    justify-content: center;
     position: absolute;
-    width: 100%;
 }
 
 .createTask {
@@ -19,7 +15,6 @@
     padding: 16px;
     width: 450px;
     height: 16px;
-    gap: 8px;
 }
 
 .buttonCreate {
@@ -32,7 +27,6 @@
     justify-content: space-between;
     padding: 15px;
     justify-content: center;
-    gap: 4px;
 }
 
 .buttonCreate:hover {
@@ -49,7 +43,7 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    margin-top: 550px;
+    margin-top: 70px;
     margin-bottom: 25px;
     width: 600px;
 }
