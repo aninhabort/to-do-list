@@ -21,6 +21,13 @@ const Body = () => {
     setNewTask(event.target.value);
   };
 
+  const DeleteTask = (taskToDelete: string) => {
+    const deleteLine = tasks.filter((line) => {
+      return line !== taskToDelete
+    });
+    setTasks(deleteLine) 
+  }
+
   return (
     <div className={styles.content}>
       <div className={styles.createTask}>
@@ -49,7 +56,7 @@ const Body = () => {
 
         {tasks ? (
           tasks.map((line) => {
-            return <Tasks key={line} content={line} />;
+            return <Tasks key={line} content={line} onDelete={DeleteTask} />;
           })
         ) : (
           <div className={styles.taskBorder}>
