@@ -2,7 +2,7 @@ import { PlusCircle, Notepad } from "phosphor-react";
 import { ChangeEvent, MouseEvent, useState } from "react";
 
 import styles from "./Body.module.css";
-import Tasks from "./Tasks";
+import Tasks from "../taskComponent/Tasks";
 
 const Body = () => {
   const [newTask, setNewTask] = useState("");

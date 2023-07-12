@@ -1,0 +1,28 @@
+.taskContent {
+  background-color: var(--gray-400, #262626);
+  border-radius: 8px;
+  margin: 8px;
+  padding: 10px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+}
+
+.checkbox {
+  display: flex;
+  flex-flow: row;
+  word-break: break-word;
+}
+
+.checkboxInput {
+  margin-right: 10px;
+}
+
+.checkboxInput:checked + .checkboxLabel {
+  text-decoration: line-through;
+}

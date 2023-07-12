@@ -1,5 +1,5 @@
-import Body from "./components/Body"
-import Header from "./components/Header"
+import Body from "./components/bodyComponent/Body"
+import Header from "./components/headerComponent/Header"
 
 import './global.css'
 import styles from './App.module.css'

@@ -11,22 +11,21 @@
     background-color: var(--gray-400, #262626);
     border-radius: 8px;
     border: none;
-    margin-right: 10px;
-    padding: 16px;
-    width: 450px;
+    color: var(--gray-300);
+    font-size: medium;
     height: 16px;
+    margin-right: 8px;
+    padding: 16px;
+    width: 480px;
 }
 
 .buttonCreate {
-    align-items: center;
     background-color: var(--pink);
     border: none;
     border-radius: 8px;
     color: white;
     display: flex;
-    justify-content: space-between;
     padding: 15px;
-    justify-content: center;
 }
 
 .buttonCreate:hover {
