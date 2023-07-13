@@ -20,6 +20,7 @@
 
 .checkboxLabel {
   display: flex;
+  color: var(--gray-100);
 }
 
 .checkboxInput {
@@ -38,4 +39,5 @@
 
 .checkboxInput:checked + .checkboxLabel {
   text-decoration: line-through;
+  color: var(--gray-300);
 }

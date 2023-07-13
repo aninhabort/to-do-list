@@ -1,63 +1,92 @@
+import {v4 as uuidv4} from 'uuid';
 import { PlusCircle, Notepad } from "phosphor-react";
-import { ChangeEvent, MouseEvent, useState } from "react";
-
-import styles from "./Body.module.css";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Tasks from "../taskComponent/Tasks";
 
-const Body = () => {
-  const [newTask, setNewTask] = useState("");
-  const [tasks, setTasks] = useState([
-    "New Task!"
-  ]);
+import styles from "./Body.module.css";
+import { TaskList } from '../interfaces';
 
-  const handleCreateNewTasks = (event: MouseEvent<HTMLButtonElement>) => {
+const Body = () => {
+  const [newTask, setNewTask] = useState<string>("");
+  const [tasks, setTasks] = useState<TaskList[]>([]);
+  const [count, setCount] = useState(0);
+  const [concluded, setConcluded] = useState(0);
+  const [checked, setChecked] = useState(false);
+
+  const myuuid = uuidv4();
+
+  const handleCreateNewTasks = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setTasks([...tasks, newTask]);
-    setNewTask("")
+    setTasks([...tasks, {
+      id: myuuid,
+      content: newTask,
+    }]);
+    
+    setCount((prevState) => prevState + 1);
+    setNewTask("");
   };
 
-  const handleChangeNewTask = (event: ChangeEvent<HTMLInputElement>) => {
-    setNewTask(event.target.value);
+  const handleChangeNewTask = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setNewTask(target.value);
   };
 
-  const DeleteTask = (taskToDelete: string) => {
-    const deleteLine = tasks.filter((line) => {
-      return line !== taskToDelete
-    });
-    setTasks(deleteLine) 
-  }
+  const DeleteTask = (id: string) => {
+    const deleteLine = tasks.filter((line) => line.id !== id);
+
+    setTasks(deleteLine);
+    setCount((prevState) => prevState - 1);
+  };
+
+  const handleCheckboxChange = () => {    
+    if (!checked) {
+      setConcluded((prevState) => prevState + 1);
+      return setChecked(true);
+    }
+    setConcluded((prevState) => prevState - 1);
+    return setChecked(false);
+  };
 
   return (
     <div className={styles.content}>
-      <div className={styles.createTask}>
+      <form onSubmit={handleCreateNewTasks} className={styles.createTask}>
         <input
           type="text"
-          className={styles.input}
-          placeholder="Adicione uma nova tarefa"
-          onChange={handleChangeNewTask}
           value={newTask}
+          className={styles.input}
+          onChange={handleChangeNewTask}
+          placeholder="Adicione uma nova tarefa"
         />
-        <button onClick={handleCreateNewTasks} className={styles.buttonCreate}>
+        <button type="submit" className={styles.buttonCreate}>
           Criar
           <PlusCircle size={18} />
         </button>
-      </div>
+      </form>
 
       <div className={styles.tasks}>
         <div className={styles.countTask}>
           <p className={styles.color1}>
-            Tarefas criadas <span>0</span>
+            Tarefas criadas <span>{count}</span>
           </p>
           <p className={styles.color2}>
-            Concluidas <span>0</span>
+            Concluidas{" "}
+            <span>
+              {concluded} de {count}
+            </span>
           </p>
         </div>
 
-        {tasks ? (
-          tasks.map((line) => {
-            return <Tasks key={line} content={line} onDelete={DeleteTask} />;
-          })
+        {tasks.length > 0 ? (
+          tasks.map((line) => (
+            <Tasks
+              key={line.id}
+              id={line.id}
+              content={line.content}
+              onDelete={DeleteTask}
+              checked={checked}
+              handleCheckboxChange={handleCheckboxChange}
+            />
+          ))
         ) : (
           <div className={styles.taskBorder}>
             <Notepad className={styles.noteImg} size={70} weight="light" />

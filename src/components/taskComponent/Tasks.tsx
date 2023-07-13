@@ -1,22 +1,17 @@
 import { CheckCircle, Circle, Trash } from "phosphor-react";
+import { TasksContent } from "../interfaces";
 
 import styles from "./Task.module.css";
-import { useState } from "react";
 
-interface TasksContent {
-  content: string;
-  onDelete: (content: string) => void;
-}
-
-const Tasks = ({ content, onDelete }: TasksContent) => {
-  const [checked, setChecked] = useState(false);
-
-  function handleDeleteTask() {
-    onDelete(content);
-  }
-
-  const handleCheckboxChange = () => {
-    return !checked ? setChecked(true) : setChecked(false);
+const Tasks = ({
+  id,
+  content,
+  onDelete,
+  checked,
+  handleCheckboxChange,
+}: TasksContent) => {
+  const handleDeleteTask = () => {
+    return onDelete(id);
   };
 
   return (
@@ -24,21 +19,21 @@ const Tasks = ({ content, onDelete }: TasksContent) => {
       <div className={styles.checkbox}>
         <input
           type="checkbox"
-          id="taskInput"
+          id={`taskInput_${id}`}
           className={styles.checkboxInput}
           checked={checked}
           onChange={handleCheckboxChange}
         />
-        <label className={styles.checkboxLabel} htmlFor="taskInput">
-        {!checked ? (
-          <Circle className={styles.circle} size={20} color="var(--pink)" />
-        ) : (
-          <CheckCircle
-            className={styles.checkCircle}
-            size={20}
-            color="var(--purple)"
-          />
-        )}
+        <label className={styles.checkboxLabel} htmlFor={`taskInput_${id}`}>
+          {!checked ? (
+            <Circle className={styles.circle} size={20} color="var(--pink)" />
+          ) : (
+            <CheckCircle
+              className={styles.checkCircle}
+              size={20}
+              color="var(--purple)"
+            />
+          )}
           {content}
         </label>
       </div>
