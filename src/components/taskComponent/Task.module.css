@@ -14,13 +14,26 @@
 }
 
 .checkbox {
-  display: flex;
-  flex-flow: row;
   word-break: break-word;
+  position: relative;
+}
+
+.checkboxLabel {
+  display: flex;
 }
 
 .checkboxInput {
+  display: none;
   margin-right: 10px;
+  position: absolute;
+}
+
+.circle,
+.checkCircle {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin-right: 5px;
 }
 
 .checkboxInput:checked + .checkboxLabel {
