@@ -8,23 +8,20 @@ const Tasks = ({
   content,
   onDelete,
   checked,
-  handleCheckboxChange,
+  onButtonClick,
 }: TasksContent) => {
   const handleDeleteTask = () => {
     return onDelete(id);
   };
 
+  const handleButtonClick = () => {
+    return onButtonClick(id)
+  }
+
   return (
     <div className={styles.taskContent}>
       <div className={styles.checkbox}>
-        <input
-          type="checkbox"
-          id={`taskInput_${id}`}
-          className={styles.checkboxInput}
-          checked={checked}
-          onChange={handleCheckboxChange}
-        />
-        <label className={styles.checkboxLabel} htmlFor={`taskInput_${id}`}>
+        <button onClick={handleButtonClick} className={styles.buttonCheckbox}>
           {!checked ? (
             <Circle className={styles.circle} size={20} color="var(--pink)" />
           ) : (
@@ -34,8 +31,8 @@ const Tasks = ({
               color="var(--purple)"
             />
           )}
-          {content}
-        </label>
+        </button>
+        <p>{content}</p>
       </div>
       <button onClick={handleDeleteTask} className={styles.removeButton}>
         <Trash size={20} color="var(--gray-300)" />

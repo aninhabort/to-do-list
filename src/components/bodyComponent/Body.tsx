@@ -1,28 +1,29 @@
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { PlusCircle, Notepad } from "phosphor-react";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Tasks from "../taskComponent/Tasks";
 
 import styles from "./Body.module.css";
-import { TaskList } from '../interfaces';
+import { TaskList } from "../interfaces";
 
 const Body = () => {
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<TaskList[]>([]);
   const [count, setCount] = useState(0);
   const [concluded, setConcluded] = useState(0);
-  const [checked, setChecked] = useState(false);
-
-  const myuuid = uuidv4();
 
   const handleCreateNewTasks = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setTasks([...tasks, {
-      id: myuuid,
-      content: newTask,
-    }]);
-    
+    setTasks([
+      ...tasks,
+      {
+        id: uuidv4(),
+        content: newTask,
+        checked: false,
+      },
+    ]);
+
     setCount((prevState) => prevState + 1);
     setNewTask("");
   };
@@ -38,13 +39,15 @@ const Body = () => {
     setCount((prevState) => prevState - 1);
   };
 
-  const handleCheckboxChange = () => {    
-    if (!checked) {
-      setConcluded((prevState) => prevState + 1);
-      return setChecked(true);
-    }
-    setConcluded((prevState) => prevState - 1);
-    return setChecked(false);
+  const handleCheckboxClick = (id: string) => {
+    setConcluded((prevState) => prevState + 1);
+
+    const updateChecked = tasks.map((line) =>
+      line.id === id && line.checked === false
+        ? (line.checked = true)
+        : (line.checked = false)
+    );
+    return updateChecked;
   };
 
   return (
@@ -83,8 +86,8 @@ const Body = () => {
               id={line.id}
               content={line.content}
               onDelete={DeleteTask}
-              checked={checked}
-              handleCheckboxChange={handleCheckboxChange}
+              checked={line.checked}
+              onButtonClick={handleCheckboxClick}
             />
           ))
         ) : (

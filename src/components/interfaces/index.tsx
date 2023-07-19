@@ -1,6 +1,7 @@
 export  interface TaskList {
   id: string,
   content: string,
+  checked: boolean,
 }
 
 export interface TasksContent {
@@ -8,5 +9,5 @@ export interface TasksContent {
   content: string;
   checked: boolean;
   onDelete: (id: string) => void;
-  handleCheckboxChange: () => void;
+  onButtonClick: (id: string) => void;
 }

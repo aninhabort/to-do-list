@@ -14,19 +14,13 @@
 }
 
 .checkbox {
-  word-break: break-word;
-  position: relative;
-}
-
-.checkboxLabel {
   display: flex;
-  color: var(--gray-100);
+  flex-flow: row;
 }
 
-.checkboxInput {
-  display: none;
-  margin-right: 10px;
-  position: absolute;
+.buttonCheckbox {
+  border: none;
+  background: none;
 }
 
 .circle,
