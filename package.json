@@ -1,8 +1,7 @@
 {
   "name": "todo-list-project",
-  "private": true,
   "version": "0.0.0",
-  "homepage": "https://aninhabort.github.io/todo-list-desafio-ignite",
+  "homepage": "https://aninhabort.github.io/todo-list-project",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
