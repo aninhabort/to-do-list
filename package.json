@@ -1,5 +1,6 @@
 {
   "name": "todo-list-project",
+  "main": "./index.html",
   "private": true,
   "version": "0.0.0",
   "type": "module",
