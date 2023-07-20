@@ -13,7 +13,7 @@
   "repository": {
     "url": "git+https://github.com/aninhabort/todo-list-desafio-ignite.git"
   },
-  "homepage": "https://github.com/aninhabort/todo-list-desafio-ignite",
+  "homepage": "https://github.com/aninhabort/todo-list-desafio-ignite/",
   "dependencies": {
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
