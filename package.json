@@ -2,7 +2,6 @@
   "name": "todo-list-desafio-ignite",
   "version": "0.0.0",
   "type": "module",
-  "main": "index.html",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -18,7 +17,6 @@
   "bugs": {
     "url": "https://github.com/aninhabort/todo-list-desafio-ignite/issues"
   },
-  "homepage": "https://todo-list-desafio-ignite",
   "dependencies": {
     "gh-pages": "^5.0.0",
     "phosphor-react": "^1.4.1",
