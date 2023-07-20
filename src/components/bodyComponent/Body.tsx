@@ -15,17 +15,19 @@ const Body = () => {
   const handleCreateNewTasks = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setTasks([
-      ...tasks,
-      {
-        id: uuidv4(),
-        content: newTask,
-        checked: false,
-      },
-    ]);
-
-    setCount((prevState) => prevState + 1);
-    setNewTask("");
+    if (newTask !== '') {
+      setTasks([
+        ...tasks,
+        {
+          id: uuidv4(),
+          content: newTask,
+          checked: false,
+        },
+      ]);
+  
+      setCount((prevState) => prevState + 1);
+      setNewTask("");
+    }
   };
 
   const handleChangeNewTask = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -40,13 +42,16 @@ const Body = () => {
   };
 
   const handleCheckboxClick = (id: string) => {
-    setConcluded((prevState) => prevState + 1);
-
-    const updateChecked = tasks.map((line) =>
-      line.id === id && line.checked === false
-        ? (line.checked = true)
-        : (line.checked = false)
-    );
+    const updateChecked = tasks
+      .filter((line) => line.id === id)
+      .map((line) => {
+        if (line.checked === false) {
+          setConcluded((prevState) => prevState + 1);
+          return line.checked = true;
+        }
+        setConcluded((prevState) => prevState - 1);
+        return line.checked = false;
+      });      
     return updateChecked;
   };
 
