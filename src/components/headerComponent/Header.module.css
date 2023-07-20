@@ -13,3 +13,9 @@
 .h1Color2 {
     color: var(--purple);
 }
+
+.logo {
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+}

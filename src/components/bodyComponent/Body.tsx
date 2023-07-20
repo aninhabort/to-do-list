@@ -15,7 +15,7 @@ const Body = () => {
   const handleCreateNewTasks = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (newTask !== '') {
+    if (newTask !== "") {
       setTasks([
         ...tasks,
         {
@@ -24,7 +24,7 @@ const Body = () => {
           checked: false,
         },
       ]);
-  
+
       setCount((prevState) => prevState + 1);
       setNewTask("");
     }
@@ -39,6 +39,7 @@ const Body = () => {
 
     setTasks(deleteLine);
     setCount((prevState) => prevState - 1);
+    setConcluded((prevState) => prevState - 1);
   };
 
   const handleCheckboxClick = (id: string) => {
@@ -47,11 +48,11 @@ const Body = () => {
       .map((line) => {
         if (line.checked === false) {
           setConcluded((prevState) => prevState + 1);
-          return line.checked = true;
+          return (line.checked = true);
         }
         setConcluded((prevState) => prevState - 1);
-        return line.checked = false;
-      });      
+        return (line.checked = false);
+      });
     return updateChecked;
   };
 
