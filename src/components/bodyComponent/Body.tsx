@@ -36,10 +36,20 @@ const Body = () => {
 
   const DeleteTask = (id: string) => {
     const deleteLine = tasks.filter((line) => line.id !== id);
+    const checkTask = tasks.find(
+      (line) => line.checked === true && line.id === id
+    );
+    console.log(checkTask);
 
-    setTasks(deleteLine);
-    setCount((prevState) => prevState - 1);
-    setConcluded((prevState) => prevState - 1);
+    if (deleteLine) {
+      setTasks(deleteLine);
+      setCount((prevState) => prevState - 1);
+    }
+    if (checkTask) {
+      setConcluded((prevState) => prevState - 1);
+    }
+    setConcluded((prevState) => prevState);
+    setCount((prevState) => prevState);
   };
 
   const handleCheckboxClick = (id: string) => {

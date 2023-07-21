@@ -1,5 +1,5 @@
 import styles from './Header.module.css';
-import img from './check-fat-duotone.png';
+import img from './assert/check-fat-duotone.png';
 
 const Header = () => {
     return (
